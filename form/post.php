@@ -12,11 +12,13 @@ $sex = $_POST['sex'];
 $resultOfPoll = $_POST['resultPoll'];
 $sender = $_SERVER['SERVER_NAME'];
 $sex = getRussianValue($sex);
+$hidden = $_POST['hidden'];
 $resultOfPollRus = getRussianResultOfPoll($resultOfPoll);
 $valuesOfPollStr = getElementOfArrStr($resultOfPollRus);
 
+
 mail("vlad.saraykin@mail.ru", "Вам пришло письмо с сайта $sender",
-   "Отзыв поситителя:($sex) $name \n \n$valuesOfPollStr Сообщение: $msg");
+   "Отзыв поситителя:($sex) $name \n$valuesOfPollStr Сообщение: $msg \n hidden: $hidden");
 
 function getRussianValue($arg){
     switch ($arg) {
