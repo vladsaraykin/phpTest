@@ -19,7 +19,7 @@
         <input type="checkbox" name="resultPoll[]" value="program"/>Программа<br>
         <input type="checkbox" name="resultPoll[]" value="atmosphere"/>Обстановка<br>
         <input type="hidden" name="hidden" value="test">
-        <textarea name="msg" id="" cols="30" rows="10" placeholder="Ваши пожеланияЖ"></textarea><br>
+        <textarea name="msg" id="" cols="30" rows="10" placeholder="Отзыв"></textarea><br>
         <input type="submit">
     </form>
     </body>

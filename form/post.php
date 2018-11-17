@@ -13,12 +13,11 @@ $resultOfPoll = $_POST['resultPoll'];
 $sender = $_SERVER['SERVER_NAME'];
 $sex = getRussianValue($sex);
 $hidden = $_POST['hidden'];
-$resultOfPollRus = getRussianResultOfPoll($resultOfPoll);
-$valuesOfPollStr = getElementOfArrStr($resultOfPollRus);
+$valuesOfPollStr = getElementOfArrStr($resultOfPoll);
 
 
 mail("vlad.saraykin@mail.ru", "Вам пришло письмо с сайта $sender",
-   "Отзыв поситителя:($sex) $name \n$valuesOfPollStr Сообщение: $msg \n hidden: $hidden");
+   "Имя поситителя:($sex) $name \n$valuesOfPollStr Отзыв: $msg \n hidden: $hidden");
 
 function getRussianValue($arg){
     switch ($arg) {
@@ -42,13 +41,14 @@ function getRussianValue($arg){
 
 function getElementOfArrStr($arr){
     if (sizeof($arr) != 0){
+        $translatedArr = getRussianResultOfPoll($arr);
         $result = "Клиенту понравилось: \n";
-        foreach ($arr as $item){
-            $result = $result."\t $item\n";
+        foreach ($translatedArr as $item){
+            $result = $result."- $item\n";
         }
         return $result;
     }else{
-        return "Клиент не выбрал ни один предложенный вариант\n";
+        return "Клиент не выбрал ни один из предложенных вариантов\n";
     }
 }
 
