@@ -26,7 +26,7 @@ $responses_of_poll = $_POST['resultPoll'];
 checkValue($responses_of_poll, 'resultPoll');
 $responses_of_poll_str = getElementsOfArrStr($responses_of_poll, 'resultPoll');
 $responses_db = getElementsOfArrDb($responses_of_poll, 'resultPoll');
-
+echo $responses_db . '<br/>';
 //if(mail($e_mail, "Вам пришло письмо с сайта $url",
 //    "Имя поситителя:($sex) $name \n$responses_of_poll_str Отзыв: $msg
 //            \n Время начала заполнения анкеты: $date_of_start_poll
@@ -44,14 +44,14 @@ $query_insert = 'INSERT INTO messages (name, sex, responses, message, date_of_st
     . $date_of_start_poll .'", "'
     . $date_of_save_db
     . '")';
-echo $query_insert . '<br/>';
+//echo $query_insert . '<br/>';
 mysqli_query($link, $query_insert) or die('Ошибка' . mysqli_error($link));
 
 ///Вывод из БД
 $query_select = 'SELECT * FROM messages';
 $result = mysqli_query($link, $query_select) or die('Ошибка' . mysqli_error($link));
 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-    echo $row["id"] . ' ' . $row["name"] . ' ' . $row["message"] . ' ' . $row["date"] . ' <br />';
+    echo $row["id"] . ' ' . $row["name"] . ' ' . $row["sex"] . ' ' . $row["responses"] . ' '  . $row["message"] . ' ' . $row["date_of_save_db"] . ' <br />';
 }
 mysqli_free_result($result);
 
@@ -118,9 +118,8 @@ function getElementsOfArrDb($responses_of_poll, $type)
     {
     $result = '';
     foreach ($responses_of_poll as $item){
-       $result = getRussianValue($item , $type) . ';';
+       $result = $result . getRussianValue($item , $type) . ';';
     }
-    echo $result;
     return $result;
     }
 }
