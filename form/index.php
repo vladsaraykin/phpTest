@@ -7,13 +7,8 @@
         <meta charset="UTF-8">
         <script type="text/javascript" language="javascript">
             function GetDateTime() {
-                var currentdate = new Date();
-                document.getElementById('date').value=currentdate.getFullYear() + "/"
-                    + (currentdate.getMonth()+1)  + "/"
-                    + currentdate.getDate() + " "
-                    + currentdate.getHours() + ":"
-                    + currentdate.getMinutes() + ":"
-                    + currentdate.getSeconds();
+                var currentdate = new Date().getTime() / 1000;
+                document.getElementById('date').value=currentdate;
             }
         </script>
     </head>
@@ -30,6 +25,7 @@
         <input type="checkbox" name="resultPoll[]" value="program"/>Программа<br>
         <input type="checkbox" name="resultPoll[]" value="atmosphere"/>Обстановка<br>
         <input type="hidden" id="date" name="datetime">
+        <input type="hidden" name="password" value="85064efb60a9601805dcea56ec5402f7">
         <textarea name="msg" cols="30" rows="10" required placeholder="Отзыв"></textarea><br>
         <input type="submit">
     </form>
