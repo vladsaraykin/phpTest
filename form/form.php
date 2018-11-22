@@ -147,6 +147,4 @@ function checkValue($value, $type)
     if(strlen($value) <= 2 || preg_match('/[0-9]/u', $value))
         echo $value . ' некорректное значение!';
     }
-
-
 }
